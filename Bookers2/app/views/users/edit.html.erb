@@ -1,0 +1,22 @@
+
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <li><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</li>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>User info</h1>
+
+<%= form_for(@user) do |f| %>
+  <p>name</p><%= f.text_field :name %>
+  <p>Image</p><%= f.attachment_field :profile_image %>
+  <p>introduction</p><%= f.text_area  :introduction, autofocus: true  %>
+
+<diV><%= f.submit 'Update User' %></diV>
+  <% end %>
+

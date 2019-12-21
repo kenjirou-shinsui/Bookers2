@@ -1,0 +1,33 @@
+
+<% if @book.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <li><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</li>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+<h1>Editing Book</h1>
+
+<%= form_for(@book) do |f| %>
+<p>Title</p>
+<%= f.text_field :title %>
+<p>Opnion</p><%= f.text_area  :body %>
+
+<div><%= f.submit 'Update Book' %></div>
+
+<% end %>
+<span>
+<%= link_to "Show", book_path(@book) %>
+|
+<%= link_to "Back", books_path %>
+</span>
+</div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<h1>User info</h1>
+
+
+
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" ,size:'100x100'  %> </th>
+        
+    
+    <table class="table">
+  <tr>
+    <td>name</td>
+   <td> <%= user.name %></td></tr>
+  <tr>
+    <td>introduction</td>
+   <td><%= user.introduction %></td></tr>
+</table>
+
+   <% if user.id == current_user.id %>
+   <%= link_to edit_user_path(user) do %>
+   <button class="btn btn-default btn-block">
+    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+</button>
+        <% end %>
+    <% end %>
+
+    <h1>New book</h1>
+    
+ <%= form_for(bookx) do |f| %>
+    <div class="field row">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "col-xs-12" %></div>
+    <div class="field row">
+        <%= f.label :body %>
+    <%= f.text_area :body , class: "col-xs-12" %></div>
+    <diV class="action row"><h6> &ensp; </h6>
+    <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %></diV>
+<% end %>
